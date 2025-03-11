@@ -37,6 +37,7 @@ class CircularLinkedList:
             self.tail.next = newNode
             
             self.head = newNode
+            return True
 
 
 
@@ -45,3 +46,18 @@ class CircularLinkedList:
             return True
         else:
             return False
+    
+    def insertTail(self, data):
+        if self.tail is None:
+            self.insertHead(data)
+        else:
+            newNode = Node(data)
+            newNode.prev = self.head.prev
+            newNode.next = self.head
+
+            self.head.prev = newNode
+            self.tail.next = newNode
+            
+            self.tail = newNode
+            return True
+
